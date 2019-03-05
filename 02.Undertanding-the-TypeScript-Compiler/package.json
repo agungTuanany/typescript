@@ -1,0 +1,15 @@
+{
+  "name": "02.undertanding-the-typescript-compiler",
+  "version": "1.0.0",
+  "description": "Sun 12:45, jakarta.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.4.0"
+  }
+}
