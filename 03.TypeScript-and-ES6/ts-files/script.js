@@ -38,17 +38,18 @@ console.log(maxLevels, "this example for 'const'");
 console.log();
 console.log(">>> eg: BLOCK SCOPE <<<");
 function reset() {
+    //  console.log(variable)     // the result is "undefined"
     var variable = null;
     console.log(variable);
 }
 reset(); // call the function
-console.log("the variable was called::", variable);
+console.log("the variable was called is::", variable);
 /*
  * The "let variable" in the function is contain in function context. Which mean
- * the fact that I set the "let variable" in this function doens't overwrite
+ * the fact that I set the "let variable" in this function doesn't overwrite
  * variable outside this function.
  *
- * They have same name but technically the're two different variables and there
+ * They have same name but technically there two different variables and there
  * for I can't evaluate their values independently.
  *
  * I can also to log "variable" in:
@@ -64,7 +65,38 @@ console.log("the variable was called::", variable);
  * function, I should pass it as parameter to the function.
  *
  * That's the behavior you know from a lot of different languages, and now we
- * finally have with JS and TypeScript(TS) as well. And this is just ES6 sytanx
+ * finally have with JS and TypeScript(TS) as well. And this is just ES6 syntanx
  * of course, but it is available in TS too, and there for using "let" and
- * "const" definetely is the way to go.
+ * "const" definitely is the way to go.
  */
+console.log();
+console.log(">>> eg: ARROW FUNCTION <<<");
+var addNumbers = function (number1, number2) {
+    return number1 + number2;
+};
+console.log(addNumbers(10, 3));
+/*
+ * This at the upper side is the regular function
+ */
+var multiplyNumbers = function (number1, number2) { return number1 * number2; };
+console.log(multiplyNumbers(10, 3));
+/*
+ * The arrow function "=>".
+ *
+ * for Arrow function we do not have to declare "function" keyword. We just
+ * start with the list parameters, The only exception here if you just have one
+ * argument then you don't need parenthesis around it, thought you won't leave
+ * it if you want also to declare the type which you should.
+ *
+ * the "=>" is to point the function body. If you only have one line,
+ *
+ *    const multiplyNumbers = () => {
+ *      return number1 * number2;
+ *    }
+ *
+ * You could simply write,
+ *
+ *    const multiplyNumbers = () => number1 * number2;
+ */
+var dividedNumber = function (number1, number2) { return number1 / number2; };
+console.log(dividedNumber(10, 3));
