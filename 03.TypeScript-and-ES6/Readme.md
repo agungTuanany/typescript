@@ -5,6 +5,7 @@
 - Block Scope
 - Arrow Functions
 - Arrow Function - Variations
+- Function and Default Parameters
 - The Spread Operator
 - The Rest Operator
 - Destructing Arrays

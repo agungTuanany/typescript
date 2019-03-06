@@ -100,3 +100,14 @@ console.log(multiplyNumbers(10, 3));
  */
 var dividedNumber = function (number1, number2) { return number1 / number2; };
 console.log(dividedNumber(10, 3));
+// arrow function without parameters
+var greet = function () {
+    console.log("Hello Console!");
+};
+var greet2 = function () { return console.log("Hello console2!"); };
+greet();
+console.log();
+greet2();
+// arrow function with 1 parameter
+var greetFriend = function (friend) { return console.log(friend); };
+greetFriend("gannat");

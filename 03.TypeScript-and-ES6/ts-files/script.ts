@@ -111,5 +111,23 @@ console.log(multiplyNumbers(10, 3));
 const dividedNumber = (number1: number, number2: number) => number1 / number2;
 console.log(dividedNumber(10, 3));
 
+// arrow function without parameters
+const greet = () => {
+  console.log("Hello Console!");
+};
+
+const greet2 = () => console.log("Hello console2!");
+greet();
+console.log();
+greet2();
+
+// arrow function with 1 parameter
+const greetFriend = (friend: string) => console.log(friend);
+greetFriend("gannat")
+
+
+
+
+
 
 
