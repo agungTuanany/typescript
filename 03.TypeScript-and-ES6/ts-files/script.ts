@@ -123,7 +123,29 @@ greet2();
 
 // arrow function with 1 parameter
 const greetFriend = (friend: string) => console.log(friend);
-greetFriend("gannat")
+greetFriend("gannat");
+
+console.log();
+console.log(">>> eg: DEFAULT PARAMATERS <<<");
+
+// Not using Default Parameter
+const countdown = (start: number): void => {
+  while (start > 0) {
+    start--;
+  }
+  console.log("Done!=", start);
+};
+countdown(30);
+
+// Using Default Paramater
+const countdown2 = (start: number = 30): void => {    //(start = 30) is default parameter
+  while (start > 0) {
+    start--;
+  }
+  console.log("Great!=", start);
+};
+countdown2();
+
 
 
 

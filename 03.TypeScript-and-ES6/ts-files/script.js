@@ -111,3 +111,22 @@ greet2();
 // arrow function with 1 parameter
 var greetFriend = function (friend) { return console.log(friend); };
 greetFriend("gannat");
+console.log();
+console.log(">>> eg: DEFAULT PARAMATERS <<<");
+// Not using Default Parameter
+var countdown = function (start) {
+    while (start > 0) {
+        start--;
+    }
+    console.log("Done!=", start);
+};
+countdown(30);
+// Using Default Paramater
+var countdown2 = function (start) {
+    if (start === void 0) { start = 30; }
+    while (start > 0) {
+        start--;
+    }
+    console.log("Great!=", start);
+};
+countdown2();
