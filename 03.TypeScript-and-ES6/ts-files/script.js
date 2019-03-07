@@ -12,7 +12,7 @@ console.log(">>> eg: LET & CONST <<<");
  * The "let" keyword is prefer way and a better then "var" keyword since only
  * has advantages and no disadvantages.
  */
-var variable = "Test";
+let variable = "Test";
 console.log(variable);
 variable = "Another Value";
 console.log(variable);
@@ -24,7 +24,7 @@ console.log(variable);
  * You should keep on your mind the type of variable ("Test") has to equal the
  * type ("Another Value") had before ("Test"), as automatically.
  */
-var maxLevels = 100;
+const maxLevels = 100;
 console.log(maxLevels, "this example for 'const'");
 // maxLevels = 99;    // Won't work
 /*
@@ -39,7 +39,7 @@ console.log();
 console.log(">>> eg: BLOCK SCOPE <<<");
 function reset() {
     //  console.log(variable)     // the result is "undefined"
-    var variable = null;
+    let variable = null;
     console.log(variable);
 }
 reset(); // call the function
@@ -71,14 +71,14 @@ console.log("the variable was called is::", variable);
  */
 console.log();
 console.log(">>> eg: ARROW FUNCTION <<<");
-var addNumbers = function (number1, number2) {
+const addNumbers = function (number1, number2) {
     return number1 + number2;
 };
 console.log(addNumbers(10, 3));
 /*
  * This at the upper side is the regular function
  */
-var multiplyNumbers = function (number1, number2) { return number1 * number2; };
+const multiplyNumbers = (number1, number2) => number1 * number2;
 console.log(multiplyNumbers(10, 3));
 /*
  * The arrow function "=>".
@@ -98,23 +98,23 @@ console.log(multiplyNumbers(10, 3));
  *
  *    const multiplyNumbers = () => number1 * number2;
  */
-var dividedNumber = function (number1, number2) { return number1 / number2; };
+const dividedNumber = (number1, number2) => number1 / number2;
 console.log(dividedNumber(10, 3));
 // arrow function without parameters
-var greet = function () {
+const greet = () => {
     console.log("Hello Console!");
 };
-var greet2 = function () { return console.log("Hello console2!"); };
+const greet2 = () => console.log("Hello console2!");
 greet();
 console.log();
 greet2();
 // arrow function with 1 parameter
-var greetFriend = function (friend) { return console.log(friend); };
+const greetFriend = (friend) => console.log(friend);
 greetFriend("gannat");
 console.log();
 console.log(">>> eg: DEFAULT PARAMATERS <<<");
 // Not using Default Parameter
-var countdown = function (start) {
+const countdown = (start) => {
     while (start > 0) {
         start--;
     }
@@ -122,8 +122,7 @@ var countdown = function (start) {
 };
 countdown(30);
 // Using Default Parameter
-var countdown2 = function (start) {
-    if (start === void 0) { start = 30; }
+const countdown2 = (start = 30) => {
     while (start > 0) {
         start--;
     }
@@ -167,9 +166,9 @@ console.log(">>> eg: THE REST & SPREAD OPERATOR <<<");
  * transform your array without having to write any complicated loops or
  * something like that, instead you just add three dot ("...").
  */
-var numbers = [1, 10, 89, -5, 35];
+const numbers = [1, 10, 89, -5, 35];
 console.log(Math.max(33, 99, 10, -3), " this is from a list of value");
-console.log(Math.max.apply(Math, numbers), " this is from number an array with spread operator");
+console.log(Math.max(...numbers), " this is from number an array with spread operator");
 /*
  * The "rest" operator.
  *
@@ -238,22 +237,12 @@ console.log(Math.max.apply(Math, numbers), " this is from number an array with s
  *
  * What it does simply depends on the place the code where you use ("...") it.
  */
-function makeArray() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
+function makeArray(...args) {
     return args;
 }
 ;
 console.log(makeArray(3, 4, 1, 99, 88), " this is an array from the REST operator");
-var makeArray2 = function () {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-    }
-    return args;
-};
+const makeArray2 = (...args) => args;
 console.log(makeArray(88, 99, 1, 4, 3), " This is an array from the Rest operator, and from makeArray2 function");
 /*
  * So if you want to combine some of the parameter to pass to the function like:
@@ -293,16 +282,66 @@ console.log(">>> eg: DESTRUCTURING ARRAYS <<<");
  *
  *    const [routine1, routine2, routine3] = myRoutine;
  */
-var myRoutine = ["prayer", "reading", "writing"];
+const myRoutine = ["prayer", "reading", "writing"];
 console.log(myRoutine[0], myRoutine[1], myRoutine[2]);
 console.log(myRoutine);
 // UNDESTRUCTURING
-var routine1 = myRoutine[0];
-var routine2 = myRoutine[1];
-var routine3 = myRoutine[2];
+const routine1 = myRoutine[0];
+const routine2 = myRoutine[1];
+const routine3 = myRoutine[2];
 console.log(routine1, routine2, routine3, " ,This is from const routine1-routine3");
 // using DESTRUCTURING,
-var myHobbies = ["prayer", "reading", "writing"];
-var hobbies1 = myHobbies[0], hobbies2 = myHobbies[1], hobbies3 = myHobbies[2];
-console.log("desctruturing my hobbies ", myHobbies);
+const myHobbies = ["prayer", "reading", "writing"];
+const [hobbies1, hobbies2, hobbies3] = myHobbies;
+console.log("destructuring my hobbies ", myHobbies);
 console.log("This is from desctructuring arrays, my hobbies is: ", hobbies1, hobbies2, hobbies3);
+console.log();
+console.log(" >>> eg: DESTRUCTURING OBJECT <<<");
+/*
+ * Destructuring is not only available for arrays, it also available for an
+ * object, let say I have an object "userData",
+ *
+ *    const userData = {userName: "gannat", age: 27};
+ *    const userName = userData.userName;
+ *    const age = userData.age;
+ *
+ *    console.log(userName, age);
+ *
+ * So far so traditional, that how you know how to access the values. Now if the
+ * goal is simply to extract the value of my object (userData) and assign them
+ * to the new variables or constant and of course destructuring does only work
+ * with the "let" keyword, well I have short syntax available too.
+ *
+ * Since I'm using an object I'm not using square bracket "[]" this is syntax
+ * for destructuring an array, for destructuring an object U'm using
+ * curly-braces "{}". Then I assign the value I want to extract.
+ *
+ */
+// UNDESTRUCTURING
+const userData = { userName: "gannat", age: 27 };
+const userName = userData.userName;
+const age = userData.age;
+console.log(userName, age);
+// DESCTRUCTURING
+const userData1 = { userName1: "gannat", age1: 27 };
+const { userName1, age1 } = userData1;
+console.log("This is from DESCTRUCTURING OBJECT: ", userName1, age1);
+/*
+ * It's important the name in Destructuring matches with the "key-name" in the
+ * object, otherwise TypeScript and ES6 has no chance of knowing which "key" you
+ * want to assign to which variable or constant here. Because the order doesn't
+ * really matter here, and the order something you can relay on, just because you
+ * wrote it. This order doesn't mean that, this will be the order the object has
+ * internally once your code run.
+ *
+ * As a side-note if you want to use different name for your constant you can
+ * put an alias, Notice that I no longer can access "userName" and "age" thought
+ * because the variables already constant created are "myName" and "myAge" not
+ * "userName" or "age". This the alternative syntax available but this is purely
+ * optionally.
+ *
+ *  const {userName: myName, age: myAge} = userData1;
+ */
+const userData2 = { userName2: "gannat", age2: 27 };
+const { userName2: myName, age2: myAge } = userData2;
+console.log("This is from DESTRUCTURING OBJECT with userData2: ", myName, myAge);

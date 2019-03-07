@@ -310,6 +310,7 @@ console.log(">>> eg: DESTRUCTURING ARRAYS <<<");
 const myRoutine = ["prayer", "reading", "writing"];
 console.log(myRoutine[0], myRoutine[1], myRoutine[2]);
 console.log(myRoutine);
+
 // UNDESTRUCTURING
 const routine1 = myRoutine[0];
 const routine2 = myRoutine[1];
@@ -319,5 +320,65 @@ console.log(routine1, routine2, routine3, " ,This is from const routine1-routine
 // using DESTRUCTURING,
 const myHobbies = ["prayer", "reading", "writing"]
 const [hobbies1, hobbies2, hobbies3] = myHobbies;
-console.log("desctruturing my hobbies ", myHobbies);
+console.log("destructuring my hobbies ", myHobbies);
 console.log("This is from desctructuring arrays, my hobbies is: " ,hobbies1, hobbies2, hobbies3);
+
+console.log()
+console.log(" >>> eg: DESTRUCTURING OBJECT <<<")
+
+/*
+ * Destructuring is not only available for arrays, it also available for an
+ * object, let say I have an object "userData",
+ *
+ *    const userData = {userName: "gannat", age: 27};
+ *    const userName = userData.userName;
+ *    const age = userData.age;
+ *
+ *    console.log(userName, age);
+ *
+ * So far so traditional, that how you know how to access the values. Now if the
+ * goal is simply to extract the value of my object (userData) and assign them
+ * to the new variables or constant and of course destructuring does only work
+ * with the "let" keyword, well I have short syntax available too.
+ *
+ * Since I'm using an object I'm not using square bracket "[]" this is syntax
+ * for destructuring an array, for destructuring an object U'm using
+ * curly-braces "{}". Then I assign the value I want to extract.
+ *
+ */
+
+// UNDESTRUCTURING
+const userData = {userName: "gannat", age: 27};
+const userName = userData.userName;
+const age = userData.age;
+
+console.log(userName, age);
+
+
+// DESCTRUCTURING
+
+const userData1 = {userName1: "gannat", age1: 27};
+const {userName1, age1} = userData1;
+console.log("This is from DESCTRUCTURING OBJECT: ",userName1, age1);
+
+
+/*
+ * It's important the name in Destructuring matches with the "key-name" in the
+ * object, otherwise TypeScript and ES6 has no chance of knowing which "key" you
+ * want to assign to which variable or constant here. Because the order doesn't
+ * really matter here, and the order something you can relay on, just because you
+ * wrote it. This order doesn't mean that, this will be the order the object has
+ * internally once your code run.
+ *
+ * As a side-note if you want to use different name for your constant you can
+ * put an alias, Notice that I no longer can access "userName" and "age" thought
+ * because the variables already constant created are "myName" and "myAge" not
+ * "userName" or "age". This the alternative syntax available but this is purely
+ * optionally.
+ *
+ *  const {userName: myName, age: myAge} = userData1;
+ */
+
+const userData2 = {userName2: "gannat", age2: 27};
+const {userName2: myName, age2: myAge} = userData2;
+console.log("This is from DESTRUCTURING OBJECT with userData2: ", myName, myAge);
