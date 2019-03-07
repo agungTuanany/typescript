@@ -279,5 +279,45 @@ console.log(makeArray(88, 99, 1, 4, 3), " This is an array from the Rest operato
  *    console.log(makeArray("gannat", 88, 99, 1, 4, 3));
  */
 
+console.log();
+console.log(">>> eg: DESTRUCTURING ARRAYS <<<");
+/*
+ * What is "DESTRUCTURING" all about?, consider you have an array which look
+ * like this,
+ *
+ *    const myRoutine =["prayer", "reading", "writing"];
+ *
+ * and I want printout myRoutine in console,
+ *
+ *    console.log(myRoutine[0], myRoutine[1], myRoutine[2]);
+ *
+ * and if you want to store it into a variable,
+ *
+ *    const routine1 = myRoutine[0];
+ *    const routine2 = myRoutine[1];
+ *    const routine3 = myRoutine[2];
+ *
+ * It's work but we have to write quite a lot of lines, we have a shorter
+ * syntax in ES6 that also support the TypeScript is "destructuring", we create
+ * a new constant and then we use this array notation "[]" but on the left side
+ * of the equal sign "=", on the right side we assign this array which we want
+ * to destructure so if want to get element out of it and then we have routine1,
+ * routine2, routine3 in the left side, look like,
+ *
+ *    const [routine1, routine2, routine3] = myRoutine;
+ */
 
+const myRoutine = ["prayer", "reading", "writing"];
+console.log(myRoutine[0], myRoutine[1], myRoutine[2]);
+console.log(myRoutine);
+// UNDESTRUCTURING
+const routine1 = myRoutine[0];
+const routine2 = myRoutine[1];
+const routine3 = myRoutine[2];
+console.log(routine1, routine2, routine3, " ,This is from const routine1-routine3");
 
+// using DESTRUCTURING,
+const myHobbies = ["prayer", "reading", "writing"]
+const [hobbies1, hobbies2, hobbies3] = myHobbies;
+console.log("desctruturing my hobbies ", myHobbies);
+console.log("This is from desctructuring arrays, my hobbies is: " ,hobbies1, hobbies2, hobbies3);
