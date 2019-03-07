@@ -170,3 +170,99 @@ console.log(">>> eg: THE REST & SPREAD OPERATOR <<<");
 var numbers = [1, 10, 89, -5, 35];
 console.log(Math.max(33, 99, 10, -3), " this is from a list of value");
 console.log(Math.max.apply(Math, numbers), " this is from number an array with spread operator");
+/*
+ * The "rest" operator.
+ *
+ * Imagine we going to write our own function makeArray(), we expect to get some
+ * argument which should be number but this should be a list of arguments.So
+ * I return this "args" here, and "args" should be an array.
+ *
+ *    function makeArray(args: number) {
+ *        return args;
+ *    };
+ *
+ * At this moments this doesn't work, I only have one element (parameter) which
+ * only fetch the first value. For that reason I can make more than one
+ * parameter to fetch into an array, by example,
+ *
+ *    function makeArray(args1: number, args2: number) {
+ *        return [args1, args2];    // return as an array.
+ *    };
+ *    console.log(makeArray(1,2));  // [1, 2] << result on console.
+ *
+ * But how to make this function more flexible way, it's only allow two values
+ * (parameter) here, but how if we want put 100 values. Well that of course will
+ * be an issue, and there for there's simple way,
+ *
+ *    function makeArray(args: number) {    // in (args: number) I want to get
+ *    a list of elements.
+ *        return args;
+ *    };
+ *
+ * so first of all that should be a flexible amount of were number of element
+ * I get, could be more than two values, and also I want to return an array.
+ *
+ * Well I can use the "rest" paramater ("...").
+ *
+ *    function makeArray(...args: number[]) {
+ *        return args;
+ *    };
+ *
+ *      == DIFFERENT BETWEEN REST AND SPREAD OPERATOR ==
+ *
+ * if we use in a function call,
+ *
+ *    Math.max(...args);    // this is a SPREAD OPERATOR.
+ *
+ * So we call a function and pass something to the function then I use the
+ * "spread" operator. Because will spread out an array. It wouldn't turn a list
+ * of numbers into an array because it does not work, because how it should look
+ * like.
+ *
+ * We can't do something like this:
+ *
+ *    Math.max(..1, 3, 99);
+ *
+ * it will be separate arguments. The ("...") will refer to the first parameter.
+ *
+ * Now When we create our own function,
+ *
+ *    function makeArray(...args: number[]) => args;
+ *
+ * the ("...") means whatever "args" is, and it can very well multiple arguments
+ * turn them into an array. Because it will fetch all the parameters we pass to
+ * make array function ' (..args: number[]) '.
+ *
+ * It will take all the parameter when we call the function and put them into in
+ * one array.
+ *
+ * What it does simply depends on the place the code where you use ("...") it.
+ */
+function makeArray() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return args;
+}
+;
+console.log(makeArray(3, 4, 1, 99, 88), " this is an array from the REST operator");
+var makeArray2 = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return args;
+};
+console.log(makeArray(88, 99, 1, 4, 3), " This is an array from the Rest operator, and from makeArray2 function");
+/*
+ * So if you want to combine some of the parameter to pass to the function like:
+ *
+ *    function makeArray(name: string, ...args: number[]) {
+ *      return args;
+ *    };
+ *
+ * and I have rewrite or recall a function like:
+ *
+ *    console.log(makeArray("gannat", 88, 99, 1, 4, 3));
+ */
