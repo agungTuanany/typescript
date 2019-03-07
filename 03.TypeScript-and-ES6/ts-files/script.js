@@ -121,7 +121,7 @@ var countdown = function (start) {
     console.log("Done!=", start);
 };
 countdown(30);
-// Using Default Paramater
+// Using Default Parameter
 var countdown2 = function (start) {
     if (start === void 0) { start = 30; }
     while (start > 0) {
@@ -130,3 +130,43 @@ var countdown2 = function (start) {
     console.log("Great!=", start);
 };
 countdown2();
+console.log();
+console.log(">>> eg: THE REST & SPREAD OPERATOR <<<");
+/*
+ * Basically the "rest" and "spread" parameter do kind of similar things, there
+ * are closely related. Above allow you to work with "Arrays" and "list of data"
+ * and difference of course is an array a kind of "object" where you store
+ * multiple values, where's list of value is just well "list of values", that's
+ * all.
+ *
+ * You pass a list of number to function like "Math.max" function, and you don't
+ * pass an array as the arguments, you pass a list of number you want to check.
+ *
+ *    Math.max(33, 99, -5, 1);    // this is not an array, just a list of number
+ *
+ * So that is how you use the "max" function on the "Math" object here.
+ *
+ * But what if we want to check the number of an array, if we just pass
+ * a parameter which is "numbers", won't work we do get compilation error,
+ * because we can't assign a 'number[]' (number array) to the "max" function to
+ * expect a list of numbers.
+ *
+ *    const numbers = [1, 10, 99, -5, 35];
+ *    console.log(Math.max(numbers));   // will get an error
+ *
+ * The solution is the "spread" operator which is "..." (three dots).
+ *
+ *    console.log(Math.max(...numbers));
+ *
+ * It's basically spread out out the "numbers array" into single values. In
+ * simple language is turn an array into a list of value, kind removing the
+ * square bracket "[]", or in more simple word is just fetches an array into
+ * list of value.
+ *
+ * The "spread" operator really useful there for because allows you to flexibly
+ * transform your array without having to write any complicated loops or
+ * something like that, instead you just add three dot ("...").
+ */
+var numbers = [1, 10, 89, -5, 35];
+console.log(Math.max(33, 99, 10, -3), " this is from a list of value");
+console.log(Math.max.apply(Math, numbers), " this is from number an array with spread operator");
