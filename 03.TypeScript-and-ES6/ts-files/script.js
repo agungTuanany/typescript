@@ -345,3 +345,35 @@ console.log("This is from DESCTRUCTURING OBJECT: ", userName1, age1);
 const userData2 = { userName2: "gannat", age2: 27 };
 const { userName2: myName, age2: myAge } = userData2;
 console.log("This is from DESTRUCTURING OBJECT with userData2: ", myName, myAge);
+console.log();
+console.log(">>> eg: TEMPLATE LITERALS <<<");
+/*
+ * Template literal is a kind of extended string or string with more features.
+ * In a normal string I could print the "clientName" like:
+ *
+ *    const clientName = "gannat";
+ *    const greeting = "hello " + clientName;
+ *
+ * This is works, but it's get some trouble if I want to use "clientName" in
+ * multiple place in the string because each time I have to skip out the string
+ * with a plus sign "+" and there after I have to re-enter and type whatever
+ * I want to type and I also can't write multiple line string, so that really is
+ * kind of cumber some and not always the best choice.
+ *
+ * If I want store more complex text in my "greeting" constant here, I could use
+ * a "template literal" instead, and I create one with the Backticks (``), this
+ * are the character allow me to make more complex string, including multi line
+ * string.
+ *
+ *
+ */
+const clientName = "gannat";
+const greeting = "hello " + clientName;
+console.log(greeting, ", This is Normal string");
+const greetingTemplate = `THIS IS A HEADING
+THIS IS A TEMPLATE STRING WITH ES6 FEATURES
+HELLO THERE!, ${clientName};
+THIS IS HOW TO MAKE A STRING MORE COMFY
+`;
+console.log();
+console.log(greetingTemplate);
