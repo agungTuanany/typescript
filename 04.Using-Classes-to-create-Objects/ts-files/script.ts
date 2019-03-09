@@ -409,3 +409,68 @@ class Helpers {
 console.log(2 * Helpers.PI);
 console.log(Helpers.calcCircumference(8));
 
+console.log();
+console.log("08. ABSTRACT CLASSES");
+
+/*
+ * Abstract class are mark with the "abstract" keyword, and abstract classes
+ * cannot instantiated directly, so what the essence of the "abstract" classes
+ * then, well you have to inherit from them, always.
+ *
+ * There basically just to be "inherit from". Why you want to create a class
+ * that you can't instantiate? Which need to be extend, well maybe because this
+ * class never need to be instantiated, but only provide some basic setup, other
+ * more specialize classes which stand will be instantiated need.
+ *
+ * For make abstract method, we don't have curly braces "()", we don't have
+ * function body we just say what it should return. So we only define how the
+ * function (method) type should look like, we not implementing any logic.
+ *
+ *    abstract class Project {
+ *      projectName: string = "Default";
+ *      budget: number;
+ *
+ *
+ *      abstract changeName(name: string): void;  // abstract method
+ *
+ *      calcBudget() {    // regular method.
+ *        return this.budget * 2;
+ *      }
+ *    }
+ *
+ * So abstract on the class mean, this class need to be extended.
+ *
+ * So abstract on the method mean, when we extended this class we need to
+ * implement a method we are require to do so, but we will have to write a logic
+ * which executed in the child class. In simple way, it's need to be overwritten
+ * or implemented in the first place.
+ *
+ * So again an "abstract" class need to be inherited, it provide a base class in
+ * cases you know that you will need such as general blueprint but it you will
+ * never use this blueprint on its own, instead need some specialize version of
+ * that blueprint. But if you want bundle some general functionality or logic in
+ * this "abstract" base class.
+ */
+
+// ABSTRACT CLASS
+abstract class Project {
+  projectName: string = "Default";
+  budget!: number;
+
+  abstract changeName(name: string): void;
+
+  calcBudget() {
+    return this.budget * 2;
+  }
+}
+
+class ITProject extends Project {
+  changeName(name: string): void {
+    this.projectName = name;
+  }
+}
+
+let newProject = new ITProject();
+console.log(newProject);
+newProject.changeName("Super IT Project");
+console.log(newProject);
