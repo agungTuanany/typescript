@@ -12,3 +12,10 @@
 - Abstract Classes
 - Private Constructors Singeltons added with TypeScript 2.0
 - Readonly Properties added with TypeScript 2.0
+
+
+How to read this lecture:
+
+1. npm start
+2. open new terminal and run "tsc -w" to edit the code.
+3. open the browser and inspect the element.

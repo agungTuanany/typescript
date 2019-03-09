@@ -1,4 +1,5 @@
 // Creating Classes and Class Properties.
+console.log(" 01. CREATING CLASSES AND CLASS PROPERTIES")
 /*
  * Basically "class" is allow us to prepare some kind of blueprint for object,
  * so you can later on create object base on a "class" to then make sure this
@@ -79,3 +80,123 @@ console.log("this is calling with person.name and person.username: ", person.nam
 console.log(`this is calling with
 person.name: " ${person.name}" and
 person.username:" ${person.username}"`);
+
+
+console.log();
+console.log("02. CLASS METHOD AND ACCESS MODIFIER");
+/*
+ * To setup the method is like a function without the "function" keyword.
+ *
+ * This how you can access "private" properties inside your "class"
+ *
+ *    printAge() {
+ *      // ...
+ *    }
+ *
+ * If I want to set a private or protected from outside class, I could create
+ * setter inside the class.
+ *
+ * This how you create method which you may access them from outside class.
+ *
+ *    setType() {
+ *      // ...
+ * }
+ *
+ * I don't have to initialize "protected" properties through the constructor,
+ * I can initialize in right on up to.
+ *
+ * so this is how you can initialize properties when you declaring them.
+ *
+ *    class Person1 {
+ *      ....
+ *      protected age: number = 73;
+ *    }
+ *
+ * One important to notice, "method" can also be "private" or "protected", which
+ * serve the same purpose as "private" or "protected" properties. You can't
+ * access them from outside but you can use them inside of your class.
+ *
+ *    private setType(type: string) {
+ *      // ...
+ *    }
+ *
+ *    or
+ *
+ *    protected setType(type: string) {
+ *      // ...
+ *    }
+ *
+ * Also important you have to use "this" keyword if you want to access
+ * properties or method of an object when you inside of it.
+ *
+ * like in the constructor:
+ *
+ *    constructor() {
+ *      this.name = name;
+ *    }
+ *
+ * like in in method when we print the age:
+ *
+ *    printAge() {
+ *      console.log(this.age);
+ *    }
+ * like we assign the type:
+ *
+ *    private setType() {
+ *      this.type = type;
+ *    }
+ *
+ * Whit "private" and "protected" MODIFIERS you can powerful ways of controlling
+ * how's able to access your properties and method in a class.
+ */
+
+class Person1 {
+  name: string;
+  private type: string = "";
+  protected age: number = 73;
+
+  constructor(name: string, public username: string) {
+    this.name = name;
+  }
+
+  printAge() {
+    console.log(this.age);
+  }
+
+  setType(type: string) {
+    this.type = type;
+    console.log(this.type);
+  }
+};
+
+const person1 = new Person1("Gannat", "gannat");
+console.log(person1.name, person1.username);
+person1.printAge();
+person1.setType("THINKER GUY");
+
+
+class Person2 {
+  name: string;
+  private type: string = "";
+  protected age: number = 31;
+
+  constructor(name: string, public username: string) {
+    this.name = name;
+  }
+
+  printAge() {
+    console.log(this.age);
+    this.setType("THINKER GUY")
+  }
+
+  private setType(type: string) {
+    this.type = type;
+    console.log(this.type);
+  }
+};
+
+const person2 = new Person2("Gannat", "gannat");
+console.log();
+console.log(person2.name, person2.username);
+person2.printAge();
+//person1.setType("THINKER GUY"); // won't work with private method.
