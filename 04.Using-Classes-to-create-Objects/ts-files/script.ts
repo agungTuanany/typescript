@@ -146,7 +146,7 @@ console.log("02. CLASS METHOD AND ACCESS MODIFIER");
  *      this.type = type;
  *    }
  *
- * Whit "private" and "protected" MODIFIERS you can powerful ways of controlling
+ * With "private" and "protected" MODIFIERS you can powerful ways of controlling
  * how's able to access your properties and method in a class.
  */
 
@@ -284,3 +284,100 @@ class Gannat2 extends Person1 {
 
 const gannat2 = new Gannat2("gannat");
 console.log(gannat2);
+
+console.log();
+console.log("GETTERS AND SETTERS");
+
+/*
+ * In vanilla JavaScript also have some ways to create "getter" and "setter",
+ * but TypeScript make it's really easy.
+ *
+ * In generally you shouldn't prefix "private" properties with underscore "_",
+ * the underscore is the style guide on TypeScript.
+ *
+ * I want to over a control to access, which mean through the "getter" and
+ * "setter" which allow me to execute some code before actually returning or
+ * setting the value.
+ *
+ * Let say, whenever I set the value, I want to check if the string provided is
+ * longer then 3 characters, so I don't want to set "_species" to anything which
+ * has only 3 characters or less.
+ *
+ * So I can create a "setter" for that which allows me to execute some code
+ * whenever I try to set a value. I do it with the "set" keyword, in the set
+ * properties name, it's accessible from the outside class later on.
+ *
+ * I do it parenthesis here "()", but I will not call it like a method from
+ * outside that important to understand. I will called like a properties but it
+ * setup like a method because I can execute some code here like a method which
+ * get called.
+ *
+ * It will actually get a parameter, and TypeScript will pass this parameter for
+ * me kind of, and the end will be JavaScript code will be look differently
+ * anyways but you can think of this "value" being pass to this kind of only
+ * theoretically existent method here automatically.
+ *
+ * So again you only see like the properties, but behind the scene will give me
+ * the value I want to assign as an argument to this methods it will execute
+ * automatically.
+ *
+ *    set species(value: string") {
+ *      if (value.length > 3) {
+ *        this._species = value;
+ *      } else {
+ *          this._species = "Default";
+ *      }
+ *    }
+ *
+ * this allow me to "set" it, but I also want to "read" it, for this I'll setup
+ * a "getter". So I use the "get" keyword with "species" here, again like
+ * a method but in this time without an argument. And then here I decide what
+ * I want to return, I do have to return something because I try to get
+ * something in the end, but I could also return "Hello!", and then I always see
+ * "Hello!" when I try to access "species".
+ *
+ *    get species() {
+ *      return "Hello!";
+ *    }
+ *
+ * But I can also write the code be like:
+ *
+ *    get species() {
+ *      return this._species;
+ *    }
+ *
+ * or transform it before showing it, whatever I want do.
+ *
+ * So this the convenience way to use "getter" and "setter" to control access to
+ * your properties, and make sure that certain criteria met before assigning
+ * a value or returning a value.
+ */
+
+// GETTER AND SETTER
+class Plant {
+  private _species: string = "Default";
+
+  get species() {
+    //return "Hello";
+    return this._species;
+  }
+
+  set species(value: string) {
+    if (value.length > 3) {
+      this._species = value;
+    } else {
+      this._species = "Default";
+    }
+  }
+}
+
+let plant = new Plant();
+console.log(plant.species);
+plant.species = "AB";
+console.log(plant.species," //will return 'Default' because I assign only Two characters for plant name.");
+plant.species = "Green Joint";
+console.log(plant.species, ` //this the third test, and result is "Green Joint" `);
+
+
+
+
