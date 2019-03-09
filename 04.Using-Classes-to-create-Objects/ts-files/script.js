@@ -186,7 +186,7 @@ person2.printAge();
 console.log();
 console.log(" INHERITANCE ");
 /*
- * Re-writing the whole class "Person" will be duplicated the code, and the code
+ * Re-writing the whole "Person" class will be duplicated the code, and the code
  * less reusable. So for inherit all "Person" class I use the keyword "extends"
  *
  * What does mean is, take the "Person" class and use all of code inside the
@@ -211,3 +211,27 @@ class Gannat extends Person {
 }
 const gannat = new Gannat("Matahari", "gannat"); // "Matahari" will be over-written.
 console.log(gannat);
+console.log();
+console.log("INHERITANCE AND CONSTRUCTOR");
+/*
+ * Now we added the constructor to make sure that we do not have to pass a "name"
+ * here because the "name" properties set and stow (load) anyways. But it has to
+ * pass the user class.
+ *
+ * When extending the class you always call the "super()" first, which call all
+ * the constructor of your "parents" class. I didn't have to do that in the last
+ * example, In such a case a parent constructor will always be called.
+ *
+ * But if I do define my own constructor in extended class, the "super()" refer
+ * to the "parent" class, and pass an arguments.
+ *
+ *
+ */
+class Gannat1 extends Person1 {
+    //name = "Gannat"
+    constructor(username) {
+        super("Gannat", username);
+    }
+}
+const gannat1 = new Gannat1("gannat");
+console.log(gannat1);
