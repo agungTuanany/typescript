@@ -200,3 +200,32 @@ console.log();
 console.log(person2.name, person2.username);
 person2.printAge();
 //person1.setType("THINKER GUY"); // won't work with private method.
+
+console.log();
+console.log(" INHERITANCE ");
+
+/*
+ * Re-writing the whole class "Person" will be duplicated the code, and the code
+ * less reusable. So for inherit all "Person" class I use the keyword "extends"
+ *
+ * What does mean is, take the "Person" class and use all of code inside the
+ * "Person" class and what ever I specified in "child" class get ever appended
+ * if isn't included in "Person" class, or overwritten if it was included.
+ *
+ * even thought I pass "Matahari" to the Constructor from "Person" class which
+ * set "this.name = name" (constructor from "Person" class), it's get over
+ * written by "name = "Gannat in the "Gannat" class.
+ *
+ * So the content define in the main class ("Gannat") always over write
+ * the content of superclass ("Person") of your parent class.
+ *
+ * None the less I have solve this issue by adding the constructor in the next
+ * lecture.
+ */
+
+class Gannat extends Person {
+  name = "Gannat";   // this will overwrite the name properties in the "Person" class
+}
+
+const gannat = new Gannat("Matahari", "gannat"); // "Matahari" will be over-written.
+console.log(gannat);
