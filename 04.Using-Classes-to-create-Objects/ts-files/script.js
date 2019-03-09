@@ -184,7 +184,7 @@ console.log(person2.name, person2.username);
 person2.printAge();
 //person1.setType("THINKER GUY"); // won't work with private method.
 console.log();
-console.log(" INHERITANCE ");
+console.log("03. INHERITANCE ");
 /*
  * Re-writing the whole "Person" class will be duplicated the code, and the code
  * less reusable. So for inherit all "Person" class I use the keyword "extends"
@@ -203,6 +203,7 @@ console.log(" INHERITANCE ");
  * None the less I have solve this issue by adding the constructor in the next
  * lecture.
  */
+// INHERITANCE
 class Gannat extends Person {
     constructor() {
         super(...arguments);
@@ -212,7 +213,7 @@ class Gannat extends Person {
 const gannat = new Gannat("Matahari", "gannat"); // "Matahari" will be over-written.
 console.log(gannat);
 console.log();
-console.log("INHERITANCE AND CONSTRUCTOR");
+console.log("04. INHERITANCE AND CONSTRUCTOR");
 /*
  * Now we added the constructor to make sure that we do not have to pass a "name"
  * here because the "name" properties set and stow (load) anyways. But it has to
@@ -224,9 +225,8 @@ console.log("INHERITANCE AND CONSTRUCTOR");
  *
  * But if I do define my own constructor in extended class, the "super()" refer
  * to the "parent" class, and pass an arguments.
- *
- *
  */
+// INHERITANCE AND CONSTRUCTOR
 class Gannat1 extends Person1 {
     //name = "Gannat"
     constructor(username) {
@@ -236,7 +236,7 @@ class Gannat1 extends Person1 {
 const gannat1 = new Gannat1("gannat");
 console.log(gannat1);
 console.log();
-console.log("INHERITANCE WRAP UP");
+console.log("05. INHERITANCE WRAP UP");
 /*
  * Now what if I want to change the age of my "Person" class here, notice the
  * "age" properties is "protected" variable, which mean it's available in "child"
@@ -248,6 +248,7 @@ console.log("INHERITANCE WRAP UP");
  * except for "private" method, and then you can extended by writing your own
  * logic, or overwrite it if you have to define method ("printAge")
  */
+// INHERITANCE WRAP UP
 class Gannat2 extends Person1 {
     constructor(username) {
         super("Gannat", username);
@@ -257,7 +258,7 @@ class Gannat2 extends Person1 {
 const gannat2 = new Gannat2("gannat");
 console.log(gannat2);
 console.log();
-console.log("GETTERS AND SETTERS");
+console.log("06. GETTERS AND SETTERS");
 /*
  * In vanilla JavaScript also have some ways to create "getter" and "setter",
  * but TypeScript make it's really easy.
@@ -346,3 +347,23 @@ plant.species = "AB";
 console.log(plant.species, " //will return 'Default' because I assign only Two characters for plant name.");
 plant.species = "Green Joint";
 console.log(plant.species, ` //this the third test, and result is "Green Joint" `);
+console.log();
+console.log("0.7 STATIC PROPERTIES AND METHODS");
+/*
+ * The "static" properties is you may use it even if you don't instantiate the
+ * class, or you don't need to instantiate a constructor method.
+ *
+ * The "properties" also can use in method.
+ *
+ * "Static" method mostly useful for some helper class which bundle some helper
+ * tools you want to create for your app.
+ */
+// STATIC PROPERTIES AND METHODS
+class Helpers {
+    static calcCircumference(diameter) {
+        return this.PI * diameter;
+    }
+}
+Helpers.PI = 3.14;
+console.log(2 * Helpers.PI);
+console.log(Helpers.calcCircumference(8));

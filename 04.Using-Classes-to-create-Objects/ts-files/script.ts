@@ -202,7 +202,7 @@ person2.printAge();
 //person1.setType("THINKER GUY"); // won't work with private method.
 
 console.log();
-console.log(" INHERITANCE ");
+console.log("03. INHERITANCE ");
 
 /*
  * Re-writing the whole "Person" class will be duplicated the code, and the code
@@ -223,6 +223,8 @@ console.log(" INHERITANCE ");
  * lecture.
  */
 
+// INHERITANCE
+
 class Gannat extends Person {
   name = "Gannat";   // this will overwrite the name properties in the "Person" class
 }
@@ -231,7 +233,7 @@ const gannat = new Gannat("Matahari", "gannat"); // "Matahari" will be over-writ
 console.log(gannat);
 
 console.log();
-console.log("INHERITANCE AND CONSTRUCTOR");
+console.log("04. INHERITANCE AND CONSTRUCTOR");
 
 /*
  * Now we added the constructor to make sure that we do not have to pass a "name"
@@ -244,9 +246,10 @@ console.log("INHERITANCE AND CONSTRUCTOR");
  *
  * But if I do define my own constructor in extended class, the "super()" refer
  * to the "parent" class, and pass an arguments.
- *
- *
  */
+
+// INHERITANCE AND CONSTRUCTOR
+
 class Gannat1 extends Person1 {
   //name = "Gannat"
 
@@ -260,7 +263,7 @@ const gannat1 = new Gannat1("gannat");
 console.log(gannat1);
 
 console.log();
-console.log("INHERITANCE WRAP UP")
+console.log("05. INHERITANCE WRAP UP")
 
 /*
  * Now what if I want to change the age of my "Person" class here, notice the
@@ -274,6 +277,8 @@ console.log("INHERITANCE WRAP UP")
  * logic, or overwrite it if you have to define method ("printAge")
  */
 
+// INHERITANCE WRAP UP
+
 class Gannat2 extends Person1 {
 
   constructor(username: string) {
@@ -286,7 +291,7 @@ const gannat2 = new Gannat2("gannat");
 console.log(gannat2);
 
 console.log();
-console.log("GETTERS AND SETTERS");
+console.log("06. GETTERS AND SETTERS");
 
 /*
  * In vanilla JavaScript also have some ways to create "getter" and "setter",
@@ -378,6 +383,29 @@ console.log(plant.species," //will return 'Default' because I assign only Two ch
 plant.species = "Green Joint";
 console.log(plant.species, ` //this the third test, and result is "Green Joint" `);
 
+console.log();
+console.log("0.7 STATIC PROPERTIES AND METHODS");
 
+/*
+ * The "static" properties is you may use it even if you don't instantiate the
+ * class, or you don't need to instantiate a constructor method.
+ *
+ * The "properties" also can use in method.
+ *
+ * "Static" method mostly useful for some helper class which bundle some helper
+ * tools you want to create for your app.
+ */
 
+// STATIC PROPERTIES AND METHODS
+
+class Helpers {
+  static PI: number = 3.14;
+
+  static calcCircumference(diameter: number): number {
+    return this.PI * diameter;
+  }
+}
+
+console.log(2 * Helpers.PI);
+console.log(Helpers.calcCircumference(8));
 
