@@ -259,5 +259,28 @@ class Gannat1 extends Person1 {
 const gannat1 = new Gannat1("gannat");
 console.log(gannat1);
 
+console.log();
+console.log("INHERITANCE WRAP UP")
 
+/*
+ * Now what if I want to change the age of my "Person" class here, notice the
+ * "age" properties is "protected" variable, which mean it's available in "child"
+ * class to.
+ *
+ * I can access "age" properties with "this" keyword and then set the number.
+ *
+ * Just always keep on mind you inherit everything from your base (master) class
+ * except for "private" method, and then you can extended by writing your own
+ * logic, or overwrite it if you have to define method ("printAge")
+ */
 
+class Gannat2 extends Person1 {
+
+  constructor(username: string) {
+    super("Gannat", username);
+    this.age = 30;
+  }
+}
+
+const gannat2 = new Gannat2("gannat");
+console.log(gannat2);
