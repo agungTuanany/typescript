@@ -531,7 +531,72 @@ class OnlyOne {
   }
 }
 
-let wrong = new OnlyOne('The Only Wrong One'); // it will get an error due to private accessory
+//let wrong = new OnlyOne('The Only Wrong One'); // it will get an error due to private accessory
 let right = OnlyOne.getInstance();
 console.log(right.name);
-console.log(wrong.name);
+//console.log(wrong.name);
+
+console.log();
+console.log("10. READONLY PROPERTIES ADDED WITH TYPESCRIPT 2.0");
+/*
+ * What if I want to make sure did I only can set in the constructor and method
+ * but not in any other place so not from outside (outside class), I want to
+ * make it readable.
+ *
+ * There are two ways to achieve, one will be using a "getter". If you don't
+ * specify a "setter" but only a "getter", then we make the class properties
+ * readable only where if that is our goal we can take shorter out,
+ *
+ *    class OnlyOne1 {
+ *      private static instance: OnlyOne;
+ *
+ *      private constructor(public readonly name: string) {}
+ *
+ *      // ...another method
+ *    }
+ */
+// READONLY PROPERTIES ADDED WITH TYPESCRIPT 2.0
+
+
+class OnlyOne1 {
+  private static instance: OnlyOne1;
+
+  private constructor(public readonly name: string) {}
+
+  static getInstance1() {
+    if(!OnlyOne1.instance) {
+      OnlyOne1.instance = new OnlyOne1("The Second Only");
+    }
+    return OnlyOne1.instance;
+  }
+}
+
+let right1 = OnlyOne1.getInstance1();
+console.log(right1.name);
+// right1.name = "Something Else you named"   // this will get an error cause its readable only
+//console.log(right1.name);
+
+// IN LOG TERM WAY TO GET READONLY PROPS
+
+class OnlyOne2 {
+  private static instance: OnlyOne2;
+  public readonly name: string;
+
+  private constructor(name: string) {
+    this.name = name;
+  }
+
+  static getInstance2() {
+    if (!OnlyOne2.instance) {
+      OnlyOne2.instance = new OnlyOne2("The Thrid practice");
+    }
+    return OnlyOne2.instance;
+  }
+}
+
+let right2 = OnlyOne2.getInstance2();
+console.log(right2.name);
+// assigning other name will get some error on TypeScript cause read-only
+// properties
+//right2.name = "THIS WILL GET YOU ON ERROR ON TSC COMPILER";
+console.log(right2.name);
