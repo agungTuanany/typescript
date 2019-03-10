@@ -474,3 +474,64 @@ let newProject = new ITProject();
 console.log(newProject);
 newProject.changeName("Super IT Project");
 console.log(newProject);
+
+console.log();
+console.log("09. PRIVATE CONSTRUCTOR SINGLETONS ADDED WITH TYPESCRIPT 2.0")
+
+/*
+ * Isn't make sense and confusing thing, is the constructor here is "private"
+ * constructor. How can we use a class if we can't construct it? If we can
+ * create an "instance" of it? And we need constructor for that.
+ * All code above when we use "new" keyword, we were using our class or at the
+ * constructor each class has to create a copy of them, blueprint the class
+ * provide us.
+ *
+ * Well turns out here, we having a pattern calls "singleton" class, you could
+ * already create this before without this "private" accessory. That allow you to
+ * setup a class were you only want to have one instance during run-time, this
+ * pattern you see in a lot of languages it's nothing TypeScript specific, a lot
+ * of all object oriented languages offer this pattern.
+ *
+ * Singleton might be useful, well I want to have an instance of this class and
+ * not a static, but I only need one instances because I want to have let say, an
+ * array of data in this class, and this array has to be the same in my come all
+ * application, so that will be were you use such a singleton and again you
+ * could create this before. But now since you can mark constructor as private
+ * you can force this class to only be use as a "singleton", which means you
+ * can't instantiate this class from outside anymore.
+ *
+ * Indeed if I run, I get an error, the code I need to use create an instance
+ * can be found inside of this class in this "public static" method "getInstance"
+ * which I call it,
+ *
+ *    let right = OnlyOne.getInstance();
+ *
+ * so, when I call, I check if I already have such "instance", so if it has been
+ * instantiated it will return "instance" otherwise I create a new instance and
+ * there after no more "instance" will be created and I can control this since
+ * no "instance" can be created form outside due to this private accessory here
+ * added to the constructor.
+ *
+ * important notice here, A class with a private constructor can not be
+ * inherited, and secondly you cannot create an object of the class which has
+ * private constructor.
+ */
+
+// PRIVATE CONSTRUCTOR SINGLETONS
+class OnlyOne {
+  private static instance: OnlyOne;
+
+  private constructor(public name: string) {}
+
+  static getInstance() {
+    if (!OnlyOne.instance) {
+      OnlyOne.instance = new OnlyOne('The Only One');
+    }
+    return OnlyOne.instance;
+  }
+}
+
+let wrong = new OnlyOne('The Only Wrong One'); // it will get an error due to private accessory
+let right = OnlyOne.getInstance();
+console.log(right.name);
+console.log(wrong.name);
