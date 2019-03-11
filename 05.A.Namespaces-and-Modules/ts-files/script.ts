@@ -1,21 +1,3 @@
-var MyMath;
-(function (MyMath) {
-    var Circle;
-    (function (Circle) {
-        var PI = 3.14; // this PI is MyMath-scope
-        function calcCircumference(diameter) {
-            return diameter * PI;
-        }
-        Circle.calcCircumference = calcCircumference;
-    })(Circle = MyMath.Circle || (MyMath.Circle = {}));
-})(MyMath || (MyMath = {}));
-var MyMath;
-(function (MyMath) {
-    function calcRectangle(width, length) {
-        return width * length;
-    }
-    MyMath.calcRectangle = calcRectangle;
-})(MyMath || (MyMath = {}));
 /*
  * NAMESPACES AND MODULES
  *
@@ -94,16 +76,22 @@ var MyMath;
  * there by default.
  *
 */
+
 /// <reference path="circleMath.ts" />
 /// <reference path="rectangleMath.ts" />
 console.log("AN INTRODUCTION TO NAMESPACES");
-var CircleMath = MyMath.Circle; // Setting an Alias, when you use nested namespace
-var PI = 3.41; // this PI is global-scope
+
+import CircleMath = MyMath.Circle; // Setting an Alias, when you use nested namespace
+
+const PI = 3.41; // this PI is global-scope
+
 console.log(MyMath.calcRectangle(10, 20), " // This calcRectangle");
 console.log(CircleMath.calcCircumference(3), "// This calcCircumference");
 console.log(PI, " // This the PI from global-scope const");
+
 console.log();
 console.log("02. NAMESPACES AND MULTIPLE FILES");
+
 /*
  * The convenient way to bundle all JavaScript Files together into one single
  * file. How do we bundle it into one file? Run the TypeScript CLI:
@@ -116,8 +104,10 @@ console.log("02. NAMESPACES AND MULTIPLE FILES");
  * --outFile: create one single file,
  *
 */
+
 console.log();
 console.log("03. NAMESPACES AND IMPORTS");
+
 /*
  * We can Imports files like ES6. With import it's important to understand I'm
  * not talking import you might know them from the ES6 syntax, if you already
@@ -141,8 +131,10 @@ console.log("03. NAMESPACES AND IMPORTS");
  * structure with structuring our code and we making sure that everything well
  * gets added into the single file in the order it needs to get added.
  */
+
 console.log();
 console.log("04. MORE ON NAMESPACES");
+
 /*
  * When working on "namespaces" you can have nested namespaces, eg:
  * circleMath.ts:
@@ -172,3 +164,33 @@ console.log("04. MORE ON NAMESPACES");
  * manually add all the files with the "tsc" CLI, but you always make sure not
  * to forget any necessary "import" in main ".ts" file.
 */
+
+console.log();
+console.log("05. LIMITATION OF NAMESPACE");
+
+/*
+ * The disadvantage, or the problem when using "namespace" in our module if you
+ * want to call it are not very declarative about what they need. Since we can
+ * add an "import" keyword any where as long we ensure to bundle all ".ts" file
+ * together into one file, it can be kind of hard to clearly see which file has
+ * dependencies, and using "namespace" it's not really manageable for bigger
+ * project.
+ *
+ * It has some disadvantages compare to ES6 module which are ES6 module very
+ * declarative about which file, which module has which dependencies and it's
+ * also make sure that each ES6 modules has it's own scope and doesn't pollute
+ * the "global-scope".
+ *
+ * "namespace" here are great tools for small applications, you probably wanna
+ * fullback ES6 modules or modules in general when working in medium size or
+ * large size project.
+ */
+
+
+
+
+
+
+
+
+
