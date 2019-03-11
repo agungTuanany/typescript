@@ -1,17 +1,17 @@
 var MyMath;
 (function (MyMath) {
-    function calcRectangle(width, length) {
-        return width * length;
-    }
-    MyMath.calcRectangle = calcRectangle;
-})(MyMath || (MyMath = {}));
-var MyMath;
-(function (MyMath) {
     var PI = 3.14; // this PI is MyMath-scope
     function calcCircumference(diameter) {
         return diameter * PI;
     }
     MyMath.calcCircumference = calcCircumference;
+})(MyMath || (MyMath = {}));
+var MyMath;
+(function (MyMath) {
+    function calcRectangle(width, length) {
+        return width * length;
+    }
+    MyMath.calcRectangle = calcRectangle;
 })(MyMath || (MyMath = {}));
 /*
  * NAMESPACES AND MODULES
@@ -91,6 +91,8 @@ var MyMath;
  * there by default.
  *
 */
+/// <reference path="circleMath.ts" />
+/// <reference path="rectangleMath.ts" />
 console.log("AN INTRODUCTION TO NAMESPACES");
 var PI = 3.41; // this PI is global-scope
 console.log(MyMath.calcRectangle(10, 20), " // This calcRectangle");
@@ -105,6 +107,33 @@ console.log("02. NAMESPACES AND MULTIPLE FILES");
  *    tsc --outFile <specified a bundle file>  <specified the .ts for bundle
  *    | can more then two files or more>
  *
+ *    tsc -outFile script.js circleMath.js rectangleMath.ts script.ts
+ *
  * --outFile: create one single file,
  *
 */
+console.log();
+console.log("03. NAMESPACES AND IMPORTS");
+/*
+ * We can Imports files like ES6. With import it's important to understand I'm
+ * not talking import you might know them from the ES6 syntax, if you already
+ * dive in to that. But TypeScript has have own import syntax for "namespaces"
+ * I comeback to the other syntax when talking about module.
+ *
+ * Remember we talking about "namespaces" here. So "namespaces" are imported by:
+ * using three forward slashes "///" then like HTML tag "<reference />" and the
+ * "path" attribute "<reference path=""/>" and that points to file we want to
+ * import here which hold the "namespaces".
+ *
+ *    /// <reference path="circleMath.ts" />
+ *    /// <reference path="rectangleMath.ts" />
+ *
+ * And Compile the "ts" file by run the command:
+ *
+ *    tsc script.ts --outFile script.js
+ *
+ * now with minimal possible amount of working necessary because we specifying
+ * all the "dependencies" or "import", with this "import" we have a better
+ * structure with structuring our code and we making sure that everything well
+ * gets added into the single file in the order it needs to get added.
+ */
