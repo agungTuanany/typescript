@@ -1,10 +1,13 @@
 var MyMath;
 (function (MyMath) {
-    var PI = 3.14; // this PI is MyMath-scope
-    function calcCircumference(diameter) {
-        return diameter * PI;
-    }
-    MyMath.calcCircumference = calcCircumference;
+    var Circle;
+    (function (Circle) {
+        var PI = 3.14; // this PI is MyMath-scope
+        function calcCircumference(diameter) {
+            return diameter * PI;
+        }
+        Circle.calcCircumference = calcCircumference;
+    })(Circle = MyMath.Circle || (MyMath.Circle = {}));
 })(MyMath || (MyMath = {}));
 var MyMath;
 (function (MyMath) {
@@ -94,9 +97,10 @@ var MyMath;
 /// <reference path="circleMath.ts" />
 /// <reference path="rectangleMath.ts" />
 console.log("AN INTRODUCTION TO NAMESPACES");
+var CircleMath = MyMath.Circle; // Setting an Alias, when you use nested namespace
 var PI = 3.41; // this PI is global-scope
 console.log(MyMath.calcRectangle(10, 20), " // This calcRectangle");
-console.log(MyMath.calcCircumference(3), "// This calcCircumference");
+console.log(CircleMath.calcCircumference(3), "// This calcCircumference");
 console.log(PI, " // This the PI from global-scope const");
 console.log();
 console.log("02. NAMESPACES AND MULTIPLE FILES");
@@ -137,3 +141,34 @@ console.log("03. NAMESPACES AND IMPORTS");
  * structure with structuring our code and we making sure that everything well
  * gets added into the single file in the order it needs to get added.
  */
+console.log();
+console.log("04. MORE ON NAMESPACES");
+/*
+ * When working on "namespaces" you can have nested namespaces, eg:
+ * circleMath.ts:
+ *
+ *    namespace MyMath {
+ *      export namespace Crilce {
+ *        const PI = 3.14;
+ *
+ *        export function calcCircumference(diameter: number) {
+ *          return diameter * PI;
+ *        }
+ *      }
+ *    }
+ *
+ * For sure you not to overdue it because you want to keep it somehow manageable
+ * in the end, and not to have ten level of "namespaces" nesting.
+ *
+ * If you still want to access everything on "MyMath" for example in the
+ * "script.ts" file example, one things you could do is, you could add a special
+ * keyword the "import" keyword,
+ *
+ *    import CircleMath = MyMath.Circle;
+ *
+ * Very important to make sure to bundle ".ts" file in single file, or import
+ * all the files in ".html" with "script" tags (<script></script>), and also
+ * make sure to add the right order of "imports" here in the main file "///", or
+ * manually add all the files with the "tsc" CLI, but you always make sure not
+ * to forget any necessary "import" in main ".ts" file.
+*/
