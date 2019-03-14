@@ -8,8 +8,13 @@ function changeName(person) {
 }
 var person = {
     firstName: "Max",
-    hobbies: ["running", "reading"]
+    hobbies: ["running", "reading"],
+    greet: function (lastName) {
+        console.log("Hi, I am " + this.firstName + " " + lastName);
+        console.log("Hi I am " + this.firstName + "  " + lastName + " // with template string");
+    }
 };
-greet({ firstName: "gannat", age: 28 });
+//greet({firstName: "gannat", age:28});
 changeName(person);
 greet(person);
+person.greet("Anything");

@@ -115,12 +115,19 @@ console.log("01. THE BASIC ABOUT INTERFACES");
  *      firstName: "Max";
  *      hobbies: [running, reading];
  *      }
+ *
+ *      >>> INTERFACES AND METHODS <<<
+ *
+ * Well so far we only consider "properties" on the interface, but that's not
+ * only we can do, we can also add a "method".
+ *
 */
 interface NamedPerson {
   firstName: string;
   age?: number;   // the "?" is optional argument
   [propName: string]: any; // the "[]" is special notation 
 
+  greet(lastName: string): void;
 }
 
 function greet(person: NamedPerson) {
@@ -131,12 +138,17 @@ function changeName(person: NamedPerson) {
   person.firstName = "Anna";
 }
 
-const person = {
+const person: NamedPerson = {
   firstName: "Max",
-  hobbies: ["running", "reading"]
+  hobbies: ["running", "reading"],
+  greet(lastName:string) {
+    console.log("Hi, I am " + this.firstName + " " + lastName);
+    console.log(`Hi I am ${this.firstName}  ${lastName} // with template string`);
+  }
 };
 
-greet({firstName: "gannat", age:28});
+//greet({firstName: "gannat", age:28});
 changeName(person);
 greet(person);
+person.greet("Anything");
 
