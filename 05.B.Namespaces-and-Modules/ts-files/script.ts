@@ -19,6 +19,10 @@
  *
  *    uncaught ReferenceError: require is not defined.
  */
-import { PI,calculateCircumference } from "../math/circle";
-console.log(PI);
-console.log(calculateCircumference(10));
+// import { PI,calculateCircumference } from "../math/circle";
+import * as Circle from "../math/circle";
+import calc from "../math/rectangle"; //use "calc" name cause only export 1 things by default
+
+console.log(Circle.PI);
+console.log(Circle.calculateCircumference(10));
+console.log(calc(2, 10));
