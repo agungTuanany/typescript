@@ -161,7 +161,7 @@ console.log("01. THE BASIC ABOUT INTERFACES");
 interface NamedPerson {
   firstName: string;
   age?: number;   // the "?" is optional argument
-  [propName: string]: any; // the "[]" is special notation 
+  [propName: string]: any; // the "[]" is special notation
 
   greet(lastName: string): void;
 }
@@ -215,3 +215,23 @@ myDoubleFunction = function(value1: number, value2: number) {
 }
 
 console.log(myDoubleFunction(10, 40));
+
+
+// INTERFACE INHERITANCE
+
+interface AgedPerson extends NamedPerson {
+  age: number;
+}
+
+const oldPerson: AgedPerson = {
+  age: 29,
+  firstName: "Annabelle",
+  greet(lastName: string) {
+    console.log(`HI ${lastName}`);
+  }
+}
+
+greet(oldPerson);
+console.log(oldPerson);
+oldPerson.lastName = "annabel";
+oldPerson.greet(`${oldPerson.lastName} now you are ${oldPerson.age} years old`);

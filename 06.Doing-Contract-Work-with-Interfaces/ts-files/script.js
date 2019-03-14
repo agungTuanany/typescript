@@ -38,3 +38,14 @@ myDoubleFunction = function (value1, value2) {
     return (value1 + value2) * 2;
 };
 console.log(myDoubleFunction(10, 40));
+const oldPerson = {
+    age: 29,
+    firstName: "Annabelle",
+    greet(lastName) {
+        console.log(`HI ${lastName}`);
+    }
+};
+greet(oldPerson);
+console.log(oldPerson);
+oldPerson.lastName = "annabel";
+oldPerson.greet(`${oldPerson.lastName} now you are ${oldPerson.age} years old`);
