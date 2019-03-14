@@ -5,9 +5,23 @@
     <meta charset="utf-8">
     <meta http-equiv="x-UA-Compatible" content ="IE=edge">
     <title>TypeScript-05.B Namespaces and Modules</title>
+    <script>src="./node_modules/systemjs/dist/system.js"</script>
   </head>
   <body>
 
+      <script>
+        SystemJS.config({
+          baseURL: "./ts-files/",
+          packages: {
+            "./ts-files": {
+              defaultExtension: 'js'
+            }
+          }
+        });
+        SystemJS.import('./ts-files/script.js');
+      </script>
+    <!--
     <script src="./ts-files/script.js"></script>
+    -->
   </body>
 </html>
