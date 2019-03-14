@@ -121,6 +121,39 @@ console.log("01. THE BASIC ABOUT INTERFACES");
  * Well so far we only consider "properties" on the interface, but that's not
  * only we can do, we can also add a "method".
  *
+ *      >>>> Using Interfaces with Classes <<<<
+ *
+ * We could also create a class "implements" the interfaces, and that require me
+ * to implement all the things I require in the "NamedPerson" interfaces in my
+ * class here to, except the optional things.
+ *
+ * Now the "greet" method from "interface" in the class, also need to implement
+ * a body. That allows me to create a constant variable "newPerson".
+ *
+ * So not only the object we create can be of the type we can also create
+ * a class which "implements" an interface of "NamedPerson". And we must to make
+ * sure we actually implement all the "method", and "properties" as define in
+ * "NamedPerson" interface.
+ *
+ * What happen if we implements something else, which isn't setup in the
+ * interface, example like "lastName". Just as we were able to use extra
+ * properties when creating an object in a constant.
+ *
+ * Remember the only very strict check happen when were you directly passing an
+ * object literal to the function which require certain interface.
+ *
+ *   greet({firstName: "gannat", age:27});
+ *
+ * So again to reinforce the information or to make this really clear. The
+ * interface is a contract which can be sign or which can be use as a type, and
+ * which then make sure all the condition setup in the interface, so that
+ * properties being required one, or optional one, and the method being required
+ * with that exact argument and return type. All this conditions have to be
+ * fulfill by what ever of the "interface" type. For example each argument pass
+ * to the "greet" method, or the class of "person". That the interface there
+ * for. These are the power this contract offer you.
+ *
+ *
 */
 interface NamedPerson {
   firstName: string;
@@ -152,3 +185,16 @@ changeName(person);
 greet(person);
 person.greet("Anything");
 
+class Person implements NamedPerson {
+  firstName: string = this.firstName;
+  lastName: string = this.lastName;
+  greet(lastName: string) {
+    console.log(`Hi I am ${this.firstName}  ${lastName} // with template string`);
+  };
+}
+
+const myPerson = new Person();
+myPerson.firstName = "Gannat";
+myPerson.lastName = "Something-else";
+greet(myPerson);   // this "greet" method not a method in the "Person" class, but a Method at "function greet(person: NamedPerson){}"
+myPerson.greet(myPerson.lastName);
