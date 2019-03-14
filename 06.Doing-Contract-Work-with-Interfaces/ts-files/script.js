@@ -8,8 +8,8 @@ function changeName(person) {
 }
 var person = {
     firstName: "Max",
-    age: 27
+    hobbies: ["running", "reading"]
 };
-greet(person);
+greet({ firstName: "gannat", age: 28 });
 changeName(person);
 greet(person);

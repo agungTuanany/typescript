@@ -62,11 +62,65 @@ console.log("01. THE BASIC ABOUT INTERFACES");
  *    }
  *
  * So "interfaces" are a way to guarantee your code that certain properties or
- * method or what ever are available 
+ * method or what ever are available
  *
+ *                >> INTERFACES AND PROPERTIES <<
+ *
+ * Now if I pass an "object literal" directly without assigning it to a "const"
+ * first.
+ *
+ *    greet(firstName: "gannat", age: 31);
+ *
+ * I get an error message that special check performed by Typescript. Even
+ * thought I'm doing the same in the "const person" when I assigning object
+ * literal to a constant, this does not get check strictly as "greet({})" does.
+ *
+ * So once you pass object literal directly it's check much more strictly, and
+ * here TypeScript recognizes that this "age" properties isn't define in the
+ * "interface". So "age" properties in "constant" is not a problem, it is
+ * a problem here when you pass in "object literal" directly in "greet({})".
+ *
+ * Just important think to know, better you create your interfaces 'explicit' as
+ * possible, so if you want to make sure that each properties is possible but
+ * not required, you can do this,
+ *
+ *    interface namePerson {
+ *      firstName: string;
+ *      age?: number;   // the "?" is mean an optional argument
+ *    }
+ *
+ * An important, is in when we call directly in "greet({})" is not connected
+ * directly to optional argument ("age?: number"), that object-literal getting
+ * pass as argument directly are check much more strictly then if you assign it
+ * into a constant first.
+ *
+ * Now what if you have an interface you might some properties where you don't
+ * know the "name of the properties" in advance. You know there might be some
+ * properties but you don't want to get any errors just because you don't know
+ * the "name" of them yet.
+ *
+ * For such a case, Typescript have a special notation you may use, you can use
+ * square-bracket "[]" as a "key-name", this is not an array just special
+ * notation.
+ *
+ *    [propName: string]: any; // the "[]" nothing to do with an array
+ *
+ * The different with the "optional" properties "?" with "special-notation" "[]"
+ * that "optional" we clearly state key-name and type of the value, where
+ * "special-notation" we don't know the kye-name yet and state of the value.
+ *
+ * So in this situation we can add some value in constant "person".
+ *
+ *    const person = {
+ *      firstName: "Max";
+ *      hobbies: [running, reading];
+ *      }
 */
 interface NamedPerson {
   firstName: string;
+  age?: number;   // the "?" is optional argument
+  [propName: string]: any; // the "[]" is special notation 
+
 }
 
 function greet(person: NamedPerson) {
@@ -79,10 +133,10 @@ function changeName(person: NamedPerson) {
 
 const person = {
   firstName: "Max",
-  age: 27
+  hobbies: ["running", "reading"]
 };
 
-greet(person);
+greet({firstName: "gannat", age:28});
 changeName(person);
 greet(person);
 
