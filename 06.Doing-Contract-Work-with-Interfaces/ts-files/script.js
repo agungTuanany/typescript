@@ -33,3 +33,8 @@ myPerson.firstName = "Gannat";
 myPerson.lastName = "Something-else";
 greet(myPerson); // this "greet" method not a method in the "Person" class, but a Method at "function greet(person: NamedPerson){}"
 myPerson.greet(myPerson.lastName);
+let myDoubleFunction;
+myDoubleFunction = function (value1, value2) {
+    return (value1 + value2) * 2;
+};
+console.log(myDoubleFunction(10, 40));

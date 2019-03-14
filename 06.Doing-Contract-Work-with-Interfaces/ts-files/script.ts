@@ -153,7 +153,10 @@ console.log("01. THE BASIC ABOUT INTERFACES");
  * to the "greet" method, or the class of "person". That the interface there
  * for. These are the power this contract offer you.
  *
+ *            >>>> INTERFACES AND FUNCTION TYPES <<<<
  *
+ * You can use interfaces to setup type of function. Whatever use "DoubleValueFunc"
+ * interface, must be a function of "DoubleValueFunc" type.
 */
 interface NamedPerson {
   firstName: string;
@@ -198,3 +201,17 @@ myPerson.firstName = "Gannat";
 myPerson.lastName = "Something-else";
 greet(myPerson);   // this "greet" method not a method in the "Person" class, but a Method at "function greet(person: NamedPerson){}"
 myPerson.greet(myPerson.lastName);
+
+
+// FUNCTION TYPES
+
+interface DoubleValueFunc {
+  (number1: number, number: number): number; // a function types declaration of interfaces
+}
+
+let myDoubleFunction: DoubleValueFunc;
+myDoubleFunction = function(value1: number, value2: number) {
+  return (value1 + value2) * 2;
+}
+
+console.log(myDoubleFunction(10, 40));
