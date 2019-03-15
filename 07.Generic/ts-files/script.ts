@@ -77,6 +77,12 @@
  * explicit and don't want to have a mix array this is how you do.
  *
  * So array is generic type by default.
+ *
+ *
+ *          >>>> GENERIC TYPES AND ARRAYS <<<<
+ *
+ * Speaking of an arrays, you can also assign a generic type to be in array for
+ * example.
  */
 
 // SIMPLE GENERIC
@@ -115,3 +121,13 @@ console.log("BUILT-IN GENERIC");
 console.log(testResult);
 testResult.push(-2.54);
 console.log(testResult);
+
+// GENERIC TYPES AND ARRAYS
+
+function printAll<T>(args: T[]) {
+  args.forEach((element) => console.log(element));
+};
+
+console.log();
+console.log("GENERIC TYPES AND ARRAYS");
+printAll<string>(["Apple", "Cinamon", "papaya"]);
