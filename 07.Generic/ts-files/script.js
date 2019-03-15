@@ -84,6 +84,17 @@
  *
  * Speaking of an arrays, you can also assign a generic type to be in array for
  * example.
+ *
+ *            >>> USING GENERIC TYPES <<<<
+ *
+ * So generic types is not this thing "<T>". Everything after the column ":" but
+ * before the equal sign "=" is a "type assignment".
+ *
+ *      <T>(data: T) => T = betterEcho;
+ *
+ * So I just write the better "echo" function, but I'm assigning this all
+ * generic things here "<T>(data: T) => T = betterEcho;" The generic function
+ * types to a normal constant making this a type assignment.
  */
 // SIMPLE GENERIC
 function echo(data) {
@@ -121,3 +132,8 @@ function printAll(args) {
 console.log();
 console.log("GENERIC TYPES AND ARRAYS");
 printAll(["Apple", "Cinamon", "papaya"]);
+// USING GENERIC TYPES
+var echo2 = betterEcho;
+console.log();
+console.log("USING GENERIC TYPES");
+console.log(echo2("EITHER SOME NEW ELSE"));
