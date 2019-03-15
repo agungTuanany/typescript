@@ -1,4 +1,4 @@
-The Course that "Maximilian" create this lecture is so powerful for grasp the
+The Course that "Maximilian" create in this lecture is so powerful for grasp the
 concept from basic to advance about TypeScript either you are reading the
 Documentation for
 [TypeScript](https://www.typescriptlang.org/docs/handbook/basic-types.html).

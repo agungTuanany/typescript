@@ -33,14 +33,59 @@
  * So we might want generic function like this, which can handle all kind of
  * "data", but once we get back to "data" it would be nice if TypeScript would
  * be aware of the exact data type and not of type any.
+ *
+ *
+ *        >>> CREATING A GENERIC FUNCTION <<<<
+ *
+ * The "<T>" strain construct make "betterEcho" function is a generic function,
+ * it's tell TypeScript this is a generic function. With this "<T>" character
+ * here were telling TypeScript when using this function give the type, and then
+ * I will be able to use this type.
+ *
+ *    function betterEcho<T>() {}
+ *
+ * There for I can use "T" here as a type, and we know the data we get will be
+ * of type "T", because again that what we will assign when we using this
+ * function.
+ *
+ *      (data: T)
+ *
+ * Since TypeScript aware of the result type, I can't do any operation with it
+ * that aren't support it by it's type. By the way you can also explicitly state
+ * which type you will use it in this function. Right now TypeScript is
+ * inferring it by the type of the argument but it could also state number here
+ * "<number>".
+ *
+ *    console.log(betterEcho<number>(30));
+ *
+ * with "<number>" keyword I make clear that I want to have a number, if I then
+ * pass not an number in "data-argument", I will have a TypeScript error.
+ * Because I explicitly said that this will be a generic function using the
+ * number type but the data I pass in doesn't match this type.
+ *
+ * And that is a light types or generic types, generic function, generic in
+ * general are powerful tool to improve your code, make your code flexible and
+ * yet manageable by the TypeScript compiler.
+ *
  */
 // SIMPLE GENERIC
 function echo(data) {
     return data;
 }
+console.log("SIMPLE GENERIC");
 console.log(echo("Gannat"));
 console.log(echo("Gannat").length);
 console.log(echo(30));
 console.log(echo(30).length);
 console.log(echo({ name: "Gannat", age: 30 }));
 console.log(echo({ name: "Gannat", age: 30 }).length);
+console.log();
+// BETTER GENERIC
+function betterEcho(data) {
+    return data;
+}
+console.log("BETTER GENERIC");
+console.log(betterEcho("Gannat"));
+console.log(betterEcho("Gannat").length);
+console.log(betterEcho(30));
+console.log(betterEcho({ name: "Gannat", age: 30 }));
