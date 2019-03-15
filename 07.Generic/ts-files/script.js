@@ -67,6 +67,17 @@
  * general are powerful tool to improve your code, make your code flexible and
  * yet manageable by the TypeScript compiler.
  *
+ *
+ *        >>> A BUILT-IN GENERIC TYPE ARRAY <<<
+ *
+ * The most prominent built in generic probably is the array. By explicitly
+ * setting the type "<number>" in an array, I'm getting the compiler support
+ * which make sure that I'm not accidentally pushing something on that array
+ * which doesn't work. Now I explicitly set which values this array will be able
+ * to hold, normally you can make "string", "number", but if you want to be
+ * explicit and don't want to have a mix array this is how you do.
+ *
+ * So array is generic type by default.
  */
 // SIMPLE GENERIC
 function echo(data) {
@@ -89,3 +100,10 @@ console.log(betterEcho("Gannat"));
 console.log(betterEcho("Gannat").length);
 console.log(betterEcho(30));
 console.log(betterEcho({ name: "Gannat", age: 30 }));
+// BUILT-IN GENERIC
+var testResult = [1.34, 2.32];
+console.log();
+console.log("BUILT-IN GENERIC");
+console.log(testResult);
+testResult.push(-2.54);
+console.log(testResult);
