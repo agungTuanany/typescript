@@ -98,6 +98,25 @@
  *
  *          >>> CREATING A GENERIC CLASS <<<
  *
+ * The issues we got here is, if I change the input value from "baseValue" or
+ * "multiplyValue" into a 'string', I'm not getting any compilation error, but
+ * of course I get "NaN" as a result.
+ *
+ * By adding "+" keyword on
+ *
+ *    return +this.baseValue * +this.mutiplyValue;
+ *
+ * I explicitly tell TypeScript I use a number.
+ *
+ *
+ *
+ *          >>> CONSTRAINT <<<
+ *
+ * In this lecture, you can control the constrain on the generic type, and in
+ * a class.
+ *
+ * You can create a generic class that you have "extends" keyword, and with that
+ * you can control which values can be pass.
  */
 // SIMPLE GENERIC
 function echo(data) {
@@ -147,7 +166,7 @@ class SimpleMath {
     }
 }
 const simpleMath = new SimpleMath();
-simpleMath.baseValue = 10;
+simpleMath.baseValue = 2;
 console.log();
 console.log("GENERIC CLASS");
 console.log(simpleMath.calculate(), "//will show you 'NaN' cause multiplyValue unvalid");
