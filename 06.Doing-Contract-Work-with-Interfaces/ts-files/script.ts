@@ -107,7 +107,7 @@ console.log("01. THE BASIC ABOUT INTERFACES");
  *
  * The different with the "optional" properties "?" with "special-notation" "[]"
  * that "optional" we clearly state key-name and type of the value, where
- * "special-notation" we don't know the kye-name yet and state of the value.
+ * "special-notation" we don't know the key-name yet and state of the value.
  *
  * So in this situation we can add some value in constant "person".
  *
@@ -121,7 +121,7 @@ console.log("01. THE BASIC ABOUT INTERFACES");
  * Well so far we only consider "properties" on the interface, but that's not
  * only we can do, we can also add a "method".
  *
- *      >>>> Using Interfaces with Classes <<<<
+ *      >>>> USING INTERFACES WITH CLASSES <<<<
  *
  * We could also create a class "implements" the interfaces, and that require me
  * to implement all the things I require in the "NamedPerson" interfaces in my

@@ -210,6 +210,6 @@ const simpleMath = new SimpleMath<string, number>();
 simpleMath.baseValue = "2";
 console.log();
 console.log("GENERIC CLASS");
-console.log(simpleMath.calculate(), "//will show you 'NaN' cause multiplyValue unvalid");
+console.log(simpleMath.calculate(), "//will show you 'NaN' cause multiplyValue invalid");
 simpleMath.multiplyValue = 20;
 console.log(simpleMath.calculate());
