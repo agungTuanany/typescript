@@ -94,6 +94,9 @@
  * So I just write the better "echo" function, but I'm assigning this all
  * generic things here "<T>(data: T) => T = betterEcho;" The generic function
  * types to a normal constant making this a type assignment.
+ *
+ *          >>> CREATING A GENERIC CLASS <<<
+ *
  */
 
 // SIMPLE GENERIC
@@ -149,3 +152,21 @@ const echo2: <T>(data: T) => T = betterEcho;
 console.log();
 console.log("USING GENERIC TYPES");
 console.log(echo2<string>("EITHER SOME NEW ELSE"));
+
+// CREATING A GENERIC CLASS
+
+class SimpleMath<T> {
+  baseValue!: T; // using "!" prevent from strictly error cause uninitialized
+  multiplyValue!: T;
+  calculate(): number {
+    return +this.baseValue * +this.multiplyValue;
+  }
+}
+
+const simpleMath = new SimpleMath();
+simpleMath.baseValue = 10;
+console.log();
+console.log("GENERIC CLASS");
+console.log(simpleMath.calculate(), "//will show you 'NaN' cause multiplyValue unvalid");
+simpleMath.multiplyValue = 20;
+console.log(simpleMath.calculate());

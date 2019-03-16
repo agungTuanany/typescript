@@ -95,6 +95,9 @@
  * So I just write the better "echo" function, but I'm assigning this all
  * generic things here "<T>(data: T) => T = betterEcho;" The generic function
  * types to a normal constant making this a type assignment.
+ *
+ *          >>> CREATING A GENERIC CLASS <<<
+ *
  */
 // SIMPLE GENERIC
 function echo(data) {
@@ -118,7 +121,7 @@ console.log(betterEcho("Gannat").length);
 console.log(betterEcho(30));
 console.log(betterEcho({ name: "Gannat", age: 30 }));
 // BUILT-IN GENERIC
-var testResult = [1.34, 2.32];
+const testResult = [1.34, 2.32];
 console.log();
 console.log("BUILT-IN GENERIC");
 console.log(testResult);
@@ -126,14 +129,27 @@ testResult.push(-2.54);
 console.log(testResult);
 // GENERIC TYPES AND ARRAYS
 function printAll(args) {
-    args.forEach(function (element) { return console.log(element); });
+    args.forEach((element) => console.log(element));
 }
 ;
 console.log();
 console.log("GENERIC TYPES AND ARRAYS");
 printAll(["Apple", "Cinamon", "papaya"]);
 // USING GENERIC TYPES
-var echo2 = betterEcho;
+const echo2 = betterEcho;
 console.log();
 console.log("USING GENERIC TYPES");
 console.log(echo2("EITHER SOME NEW ELSE"));
+// CREATING A GENERIC CLASS
+class SimpleMath {
+    calculate() {
+        return +this.baseValue * +this.multiplyValue;
+    }
+}
+const simpleMath = new SimpleMath();
+simpleMath.baseValue = 10;
+console.log();
+console.log("GENERIC CLASS");
+console.log(simpleMath.calculate(), "//will show you 'NaN' cause multiplyValue unvalid");
+simpleMath.multiplyValue = 20;
+console.log(simpleMath.calculate());
