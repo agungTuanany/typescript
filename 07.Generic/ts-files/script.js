@@ -108,8 +108,6 @@
  *
  * I explicitly tell TypeScript I use a number.
  *
- *
- *
  *          >>> CONSTRAINT <<<
  *
  * In this lecture, you can control the constrain on the generic type, and in
@@ -117,6 +115,32 @@
  *
  * You can create a generic class that you have "extends" keyword, and with that
  * you can control which values can be pass.
+ *
+ *        >>> USING MORE THAN ONE GENERIC TYPE <<<
+ *
+ * It would be nice if we could be flexible in input value,
+ *
+ *    simpleMath.baseValue = "10"; // as a string
+ *    simpleMath.multiplyValue = 20; // as a number
+ *
+ * We can use multiple values in the generic type declaration.
+ *
+ *    class SimpleMath<T extends number | string> {}
+ *
+ * to be,
+ *
+ *    class SimpleMath<T extends number | string, U extends number | string> {}
+ *
+ * It's a convention you use "T" and "U" if you use mutliple generic
+ * declaration.
+ *
+ * eg:
+ *
+ *    class SimpleMath<T extends U, U extends number | string> {}
+ *
+ * It's mean I'm not saying that "T" should have same constrain that "U", It's
+ * means "T" has to be the same type as "U". So if I pick "number" as a "U" then
+ * "T" also has also a "number" as a type.
  */
 // SIMPLE GENERIC
 function echo(data) {
@@ -166,7 +190,7 @@ class SimpleMath {
     }
 }
 const simpleMath = new SimpleMath();
-simpleMath.baseValue = 2;
+simpleMath.baseValue = "2";
 console.log();
 console.log("GENERIC CLASS");
 console.log(simpleMath.calculate(), "//will show you 'NaN' cause multiplyValue unvalid");
