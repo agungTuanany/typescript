@@ -18,7 +18,18 @@
  *
  * That just what TypeScript pass to a "decorator". If you attach "decorator" to
  * a class it will get one argument and this one argument is the constructor
- * function of this class.j
+ * function of this class.
+ *
+ *      >> DECORATORS FACTORIES <<
+ *
+ * "logging" is not really decorator attach, I'm attach logging result since
+ * I executing  the "logging" function, and the result whatever "logging"
+ * function return is the "logged" function which again is a valid function to
+ * be use as a class decorators "(constructorFn: Function)" because it's get
+ * constructor argument.
+ *
+ * Keep this in mind, "@logging" means attach the result of this function for
+ * execution which is "null" if we set it to false, so no decorator was attached.
  */
 
 function logged(constructorFn: Function) {
@@ -30,5 +41,15 @@ class Person {
   constructor() {
     console.log("HI!");
   }
+}
+
+// FACTORY
+function logging(value: boolean) {
+  return value ? logged : null;
+}
+
+@logging(true)
+class Car {
+
 }
 

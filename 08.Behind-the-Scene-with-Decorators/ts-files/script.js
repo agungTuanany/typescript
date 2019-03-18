@@ -19,7 +19,18 @@
  *
  * That just what TypeScript pass to a "decorator". If you attach "decorator" to
  * a class it will get one argument and this one argument is the constructor
- * function of this class.j
+ * function of this class.
+ *
+ *      >> DECORATORS FACTORIES <<
+ *
+ * "logging" is not really decorator attach, I'm attach logging result since
+ * I executing  the "logging" function, and the result whatever "logging"
+ * function return is the "logged" function which again is a valid function to
+ * be use as a class decorators "(constructorFn: Function)" because it's get
+ * constructor argument.
+ *
+ * Keep this in mind, "@logging" means attach the result of this function for
+ * execution which is "null" if we set it to false, so no decorator was attached.
  */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -38,3 +49,12 @@ let Person = class Person {
 Person = __decorate([
     logged
 ], Person);
+// FACTORY
+function logging(value) {
+    return value ? logged : null;
+}
+let Car = class Car {
+};
+Car = __decorate([
+    logging(true)
+], Car);
