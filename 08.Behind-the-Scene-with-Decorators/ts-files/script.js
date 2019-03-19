@@ -31,6 +31,21 @@
  *
  * Keep this in mind, "@logging" means attach the result of this function for
  * execution which is "null" if we set it to false, so no decorator was attached.
+ *
+ *        >> CREATING A USEFUL DECORATOR <<
+ *
+ * It's important to keep in mind, at "Plant" class that "decorator" attach the
+ * class get the "constructorFn" were basically is this blueprint of  "Plant"
+ * class, that how's JS work, the class just syntactic sugar, we have
+ * a "constructorFn" at the background.
+ *
+ * And the ".prototype" on this "constructorFn", kind of parent class of all
+ * object, I add the ".print" method that allow to print it self.
+ *
+ * So with that I add more little bit more useful 'decorator' to the class, to
+ * show what you can do with decorator.
+ *
+ *
  */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58,3 +73,19 @@ let Car = class Car {
 Car = __decorate([
     logging(true)
 ], Car);
+// ADVANCED
+function printable(constructorFn) {
+    constructorFn.prototype.print = function () {
+        console.log(this);
+    };
+}
+let Plant = class Plant {
+    constructor() {
+        this.name = "GREEN JOINT";
+    }
+};
+Plant = __decorate([
+    printable
+], Plant);
+const plant = new Plant();
+plant.print();

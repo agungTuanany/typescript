@@ -30,6 +30,21 @@
  *
  * Keep this in mind, "@logging" means attach the result of this function for
  * execution which is "null" if we set it to false, so no decorator was attached.
+ *
+ *        >> CREATING A USEFUL DECORATOR <<
+ *
+ * It's important to keep in mind, at "Plant" class that "decorator" attach the
+ * class get the "constructorFn" were basically is this blueprint of  "Plant"
+ * class, that how's JS work, the class just syntactic sugar, we have
+ * a "constructorFn" at the background.
+ *
+ * And the ".prototype" on this "constructorFn", kind of parent class of all
+ * object, I add the ".print" method that allow to print it self.
+ *
+ * So with that I add more little bit more useful 'decorator' to the class, to
+ * show what you can do with decorator.
+ *
+ *
  */
 
 function logged(constructorFn: Function) {
@@ -53,3 +68,17 @@ class Car {
 
 }
 
+// ADVANCED
+function printable(constructorFn: Function) {
+  constructorFn.prototype.print = function() {
+    console.log(this);
+  }
+}
+
+@printable
+class Plant {
+  name = "GREEN JOINT";
+}
+
+const plant = new Plant();
+(<any>plant).print();
