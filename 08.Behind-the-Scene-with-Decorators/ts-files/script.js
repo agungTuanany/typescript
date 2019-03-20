@@ -45,6 +45,23 @@
  * So with that I add more little bit more useful 'decorator' to the class, to
  * show what you can do with decorator.
  *
+ *      >> A FIRST SUMMARY <<
+ *
+ * The "KEY" take away is just a function, a normal function, any function could
+ * be a 'decorator' in theory, but then it depends when and where you want o attach
+ * this function as 'decorator? And what does depends on that? Which argument
+ * can use on to this function. Then you simply attach decorator  with attach
+ * sign "@", and you can even directly attach the kind of final decorator you
+ * wanna use by leaving out prenthesis "()", in this case you have to make sure
+ * that the parameter pass to the function match the parameters TS will give you
+ * for this type of decorators.
+ *
+ * The alternative way is to use "factory", you have to execute by adding
+ * parenthesis and any potential argument you specified. And this "factory" has
+ * return a function which can be use as decorator which mean a function with
+ * the right parameters.
+ *
+ *
  *
  */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -85,6 +102,7 @@ let Plant = class Plant {
     }
 };
 Plant = __decorate([
+    logging(true),
     printable
 ], Plant);
 const plant = new Plant();
