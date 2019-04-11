@@ -103,10 +103,19 @@ const plant = new Plant();
 (<any>plant).print();
 
 // METHOD DECORATOR
+// PROPERTY DECORATOR
 function editable(value: boolean) {
   return function(target: any, propName: string, descriptor: PropertyDescriptor) {
     descriptor.writable = value;
+  }
+}
 
+function overwriteable(value: boolean) {
+  return function(target: any, propName: string): any {
+    const newDescriptor: PropertyDescriptor = {
+      writable: value
+    };
+  return newDescriptor;
   }
 }
 
@@ -129,3 +138,4 @@ project.calcBudget = function() {
   console.log(2000);
 };
 project.calcBudget();
+console.log(Project);

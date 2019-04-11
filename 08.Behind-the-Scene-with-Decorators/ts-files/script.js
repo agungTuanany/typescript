@@ -109,9 +109,18 @@ Plant = __decorate([
 const plant = new Plant();
 plant.print();
 // METHOD DECORATOR
+// PROPERTY DECORATOR
 function editable(value) {
     return function (target, propName, descriptor) {
         descriptor.writable = value;
+    };
+}
+function overwriteable(value) {
+    return function (target, propName) {
+        const newDescriptor = {
+            writable: value
+        };
+        return newDescriptor;
     };
 }
 class Project {
@@ -131,3 +140,4 @@ project.calcBudget = function () {
     console.log(2000);
 };
 project.calcBudget();
+console.log(Project);
