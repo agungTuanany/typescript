@@ -61,6 +61,7 @@
  * return a function which can be use as decorator which mean a function with
  * the right parameters.
  *
+ *    >> METHOD DECORATOR <<
  *
  *
  */
@@ -107,3 +108,26 @@ Plant = __decorate([
 ], Plant);
 const plant = new Plant();
 plant.print();
+// METHOD DECORATOR
+function editable(value) {
+    return function (target, propName, descriptor) {
+        descriptor.writable = value;
+    };
+}
+class Project {
+    constructor(name) {
+        this.projectName = name;
+    }
+    calcBudget() {
+        console.log(1000);
+    }
+}
+__decorate([
+    editable(false)
+], Project.prototype, "calcBudget", null);
+const project = new Project("Super Project");
+project.calcBudget();
+project.calcBudget = function () {
+    console.log(2000);
+};
+project.calcBudget();
