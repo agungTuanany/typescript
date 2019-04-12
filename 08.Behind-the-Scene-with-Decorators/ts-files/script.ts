@@ -139,3 +139,31 @@ project.calcBudget = function() {
 };
 project.calcBudget();
 console.log(Project);
+
+// Parameter Decorator
+
+function printInfo(target: any, methodName: string, paramIndex: number) {
+  console.log("Targer: ", target);
+  console.log("methodName: ", methodName);
+  console.log("paramIndex: ", paramIndex);
+}
+
+class Course {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  printStudentNumbers(mode: string, @printInfo printAll: boolean) {
+    if (printAll) {
+      console.log(10000);
+    } else {
+      console.log(2000);
+    }
+  }
+}
+
+const course = new Course("Super Course");
+course.printStudentNumbers("ANYTHING", true);
+course.printStudentNumbers("ANYTHING", false);
